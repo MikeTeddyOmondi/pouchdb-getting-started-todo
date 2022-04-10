@@ -1,0 +1,12 @@
+# Ignored files
+.git
+.gitignore
+.gitmodules
+.gitattributes
+.gitkeep
+
+web-depl.yml
+Dockerfile
+docker-compose.yml
+
+
