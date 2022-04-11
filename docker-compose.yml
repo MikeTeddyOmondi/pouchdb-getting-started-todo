@@ -16,19 +16,19 @@ services:
     depends_on:
       - database
 
-#   database:
-#     image: couchdb:2.3.1
-#     container_name: todo-app-couchdb
-#     environment:
-#       - COUCHDB_USER=admin
-#       - COUCHDB_PASSWORD=admin
-#       - COUCHDB_PORT=5984
-#     ports: # port mapping
-#       - "5984:5984"
-#     volumes: # volume mapping
-#       - todo-app-data:/opt/couchdb/data # data directory
-#       - todo-app-data:/var/lib/couchdb # data directory
-#     command: [couchdb] # run couchdb
+  database:
+    image: couchdb:2.3.1
+    container_name: todo-app-couchdb
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=admin
+      - COUCHDB_PORT=5984
+    ports: # port mapping
+      - "5984:5984"
+    volumes: # volume mapping
+      - todo-app-data:/opt/couchdb/data # data directory
+      - todo-app-data:/var/lib/couchdb # data directory
+    command: [couchdb] # run couchdb
 
-# volumes:
-#   todo-app-data:
+volumes:
+  todo-app-data:
