@@ -2,7 +2,7 @@ version: "3.6"
 
 services:
   web:
-    image: ranckosolutions/todo-app-nginx:1.0-beta
+    image: ranckosolutionsinc/todo-app-nginx:1.0-beta
     container_name: todo-app-nginx
     volumes:
       - ./:/usr/share/nginx/html:ro
@@ -25,6 +25,8 @@ services:
       - COUCHDB_PORT=5984
     ports: # port mapping
       - "5984:5984"
+    expose: 
+      - 5984
     volumes: # volume mapping
       - todo-app-data:/opt/couchdb/data # data directory
       - todo-app-data:/var/lib/couchdb # data directory
