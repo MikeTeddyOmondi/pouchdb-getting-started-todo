@@ -2,14 +2,14 @@ version: "3.6"
 
 services:
   web:
-    image: ranckosolutionsinc/todo-app-nginx:1.0-beta
+    image: ranckosolutionsinc/todo-app-nginx:1.1-beta
     container_name: todo-app-nginx
     volumes:
       - ./:/usr/share/nginx/html:ro
     #   - ./nginx.conf:/etc/nginx/nginx.conf:ro
     command: [nginx-debug, "-g", "daemon off;"]
     environment:
-      - NGINX_HOST=foobar.com
+      - NGINX_HOST=localhost
       - NGINX_PORT=80
     ports:
       - "8090:80"
@@ -17,7 +17,7 @@ services:
       - database
 
   database:
-    image: couchdb:2.3.1
+    image: couchdb:3.2
     container_name: todo-app-couchdb
     environment:
       - COUCHDB_USER=admin
@@ -30,6 +30,7 @@ services:
     volumes: # volume mapping
       - todo-app-data:/opt/couchdb/data # data directory
       - todo-app-data:/var/lib/couchdb # data directory
+      - ./couchdb/local.ini:/opt/couchdb/etc/local.ini  
     command: [couchdb] # run couchdb
 
 volumes:
